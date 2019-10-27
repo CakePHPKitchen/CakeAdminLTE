@@ -1,38 +1,25 @@
-<?php
-use Cake\Core\Configure;
-use Cake\Error\Debugger;
 
-$this->layout = 'error';
+<section class="content-header">
+      <h1>404 Error Page</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">404 error</li>
+      </ol>
+    </section>
 
-if (Configure::read('debug')) :
-    $this->layout = 'dev_error';
+    <!-- Main content -->
+    <section class="content">
+      <div class="error-page">
+        <h2 class="headline text-yellow"> 404</h2>
 
-    $this->assign('title', $message);
-    $this->assign('templateName', 'error400.ctp');
+        <div class="error-content">
+          <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
 
-    $this->start('file');
-?>
-<?php if (!empty($error->queryString)) : ?>
-    <p class="notice">
-        <strong>SQL Query: </strong>
-        <?= h($error->queryString) ?>
-    </p>
-<?php endif; ?>
-<?php if (!empty($error->params)) : ?>
-        <strong>SQL Query Params: </strong>
-        <?php Debugger::dump($error->params) ?>
-<?php endif; ?>
-<?= $this->element('auto_table_warning') ?>
-<?php
-if (extension_loaded('xdebug')) :
-    xdebug_print_function_stack();
-endif;
+          <p>We could not find the page you were looking for. Meanwhile, you may <a href="/dashboard">return to dashboard</a></p>
 
-$this->end();
-endif;
-?>
-<h2><?= h($message) ?></h2>
-<p class="error">
-    <strong><?= __d('cake', 'Error') ?>: </strong>
-    <?= __d('cake', 'The requested address {0} was not found on this server.', "<strong>'{$url}'</strong>") ?>
-</p>
+        </div>
+        <!-- /.error-content -->
+      </div>
+      <!-- /.error-page -->
+    </section>
+    <!-- /.content -->

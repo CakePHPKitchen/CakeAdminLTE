@@ -16,6 +16,7 @@ namespace App\Controller;
 
 use AdminLTE\Utility\Messaging;
 use AdminLTE\Utility\Notifications;
+use AdminLTETimeline\Utility\Timeline;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Core\Configure;
@@ -26,6 +27,7 @@ use AdminLTE\Utility\Menu;
 use AdminLTE\Utility\Sidebar;
 use AdminLTE\Utility\Tasks;
 use CakeDC\Users\Controller\Traits\CustomUsersTableTrait;
+use AdminLTE\Utility\Auth;
 
 /**
  * Application Controller
@@ -68,6 +70,14 @@ class AppController extends Controller
         $this->loadComponent('Csrf');
 
         $this->Auth->allow(['register', 'requestResetPassword', 'login']);
+
+        if(method_exists($this->Auth, 'user')) {
+
+            if ($this->Auth->user('id')) {
+
+                Auth::$currentUserId = $this->Auth->user('id');
+            }
+        }
     }
 
     /**

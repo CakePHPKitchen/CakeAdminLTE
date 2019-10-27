@@ -34,6 +34,12 @@ class Application extends BaseApplication
      */
     public function bootstrap()
     {
+        $this->addPlugin('AdminLTEMedia');
+
+        $this->addPlugin('AdminLTEComments');
+
+        $this->addPlugin('AdminLTETimeline');
+
         // Call parent to load bootstrap from files.
         parent::bootstrap();
 

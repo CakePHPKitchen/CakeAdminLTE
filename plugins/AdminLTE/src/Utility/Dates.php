@@ -74,4 +74,18 @@ class Dates
 
         return $lapsedTime;
     }
+
+    public static function getDayOfMonth($date)
+    {
+        $d = new \DateTime($date);
+
+        return $d->format('Y-m-d');
+    }
+
+    public static function getFancyDate($date)
+    {
+        $d = new \DateTime($date);
+
+        return $d->format('jS F Y');
+    }
 }

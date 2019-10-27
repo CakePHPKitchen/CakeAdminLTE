@@ -20,6 +20,34 @@ class MenuNotifications {
         return TableRegistry::get('AdminLTEMenuNotificationLogs', ['className' => 'AdminLTE\Model\Table\MenuNotificationLogsTable']);
     }
 
+    public static function addGroupMenuNotification($menuGroup, $destination = self::Globe, $user_id = '', $role_id = '', $count = 1)
+    {
+        $menuNotificationsTable = self::getMenuNotificationsTable();
+        $menuNotificationsEntity = $menuNotificationsTable->newEntity([
+            'menu_group' => $menuGroup,
+            'menu_title' => '',
+            'notification_count' => $count,
+            'destination' => $destination,
+            'user_id' => $user_id,
+            'role_id' => $role_id
+        ]);
+        $menuNotificationsTable->save($menuNotificationsEntity);
+    }
+
+    public static function addItemMenuNotification($menuGroup, $menuTitle, $destination = self::Globe, $user_id = '', $role_id = '', $count = 1)
+    {
+        $menuNotificationsTable = self::getMenuNotificationsTable();
+        $menuNotificationsEntity = $menuNotificationsTable->newEntity([
+            'menu_group' => $menuGroup,
+            'menu_title' => $menuTitle,
+            'notification_count' => $count,
+            'destination' => $destination,
+            'user_id' => $user_id,
+            'role_id' => $role_id
+        ]);
+        $menuNotificationsTable->save($menuNotificationsEntity);
+    }
+
     public static function addGlobalGroupMenuNotification($menuGroup, $count = 1)
     {
         $menuNotificationsTable = self::getMenuNotificationsTable();
