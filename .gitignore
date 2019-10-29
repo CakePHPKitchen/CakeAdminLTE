@@ -33,9 +33,12 @@ plugins/AdminLTE/config/Migrations/schema-dump-default.lock
 Icon?
 ehthumbs.db
 Thumbs.db
+.directory
 
 # Tool specific files #
 #######################
+# PHPUnit
+.phpunit.result.cache
 # vim
 *~
 *.swp
