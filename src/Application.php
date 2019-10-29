@@ -34,6 +34,8 @@ class Application extends BaseApplication
      */
     public function bootstrap()
     {
+        $this->addPlugin('AdminLTECalendar');
+
         $this->addPlugin('AdminLTEMedia');
 
         $this->addPlugin('AdminLTEComments');

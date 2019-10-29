@@ -46,14 +46,22 @@
     "autoload": {
         "psr-4": {
             "App\\": "src",
-            "AdminLTE\\": "./plugins/AdminLTE/src"
+            "AdminLTE\\": "./plugins/AdminLTE/src",
+            "AdminLTETimeline\\": "./plugins/AdminLTETimeline/src/",
+            "AdminLTEComments\\": "./plugins/AdminLTEComments/src/",
+            "AdminLTEMedia\\": "./plugins/AdminLTEMedia/src/",
+            "AdminLTECalendar\\": "./plugins/AdminLTECalendar/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
             "App\\Test\\": "tests",
             "Cake\\Test\\": "./vendor/cakephp/cakephp/tests",
-            "AdminLTE\\Test\\": "./plugins/AdminLTE/tests"
+            "AdminLTE\\Test\\": "./plugins/AdminLTE/tests",
+            "AdminLTETimeline\\Test\\": "./plugins/AdminLTETimeline/tests/",
+            "AdminLTEComments\\Test\\": "./plugins/AdminLTEComments/tests/",
+            "AdminLTEMedia\\Test\\": "./plugins/AdminLTEMedia/tests/",
+            "AdminLTECalendar\\Test\\": "./plugins/AdminLTECalendar/tests/"
         }
     },
     "scripts": {
