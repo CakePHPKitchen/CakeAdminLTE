@@ -18,7 +18,6 @@ class Colors
             'bg-red',
             'bg-gray',
             'bg-light-blue',
-            'bg-lime',
             'bg-maroon',
             'bg-navy'
         ];

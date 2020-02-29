@@ -336,8 +336,8 @@ class HelpController extends AppController
 
     public function topic($id = 0)
     {
-        $topicsTable = TableRegistry::get('AdminLTE.faq_topics');
-        $topicsQuery = $topicsTable->find('slugged', ['slug' => $id, 'contain' => ['faq_answers', 'faq_answers.faq_topics']]);
+        $topicsTable = TableRegistry::get('AdminLTE.FaqTopics');
+        $topicsQuery = $topicsTable->find('slugged', ['slug' => $id, 'contain' => ['FaqAnswers', 'FaqAnswers.FaqTopics']]);
         $topicsResults = $topicsQuery->first();
 
         $this->set('title', $topicsResults->topic);

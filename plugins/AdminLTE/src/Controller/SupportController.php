@@ -48,17 +48,18 @@ class SupportController extends AppController
     public function view($id)
     {
         $usersTable = TableRegistry::get(Configure::read('Users.table'));
-        $query = $usersTable->find('all')->where(['users.id' => $this->Auth->user('id')])->limit(1);
+        $query = $usersTable->find('all')->where(['Users.id' => $this->Auth->user('id')])->limit(1);
         $user = $query->first();
 
         $messagesTable = TableRegistry::get('AdminLTE.Messages');
-        $messagesQuery = $messagesTable->find('all', ['contain' => ['Users']])->where(['messages.id' => $id])->limit(1)->orderAsc('messages.created');;
+        $messagesQuery = $messagesTable->find('all', ['contain' => ['Users']])->where(['Messages.id' => $id])->limit(1)->orderAsc('Messages.created');;
+        $messagesQuery = $messagesTable->find('all', ['contain' => ['Users']])->where(['Messages.id' => $id])->limit(1)->orderAsc('Messages.created');;
         $message = $messagesQuery->first();
 
-        $repliesQuery = $messagesTable->find('all', ['contain' => ['Users']])->where(['messages.message_id' => $id])->orderAsc('messages.created');;
+        $repliesQuery = $messagesTable->find('all', ['contain' => ['Users']])->where(['Messages.message_id' => $id])->orderAsc('Messages.created');;
         $replies = $repliesQuery->all();
 
-        $messageFromQuery = $usersTable->find('all')->where(['users.id' => $message->user_id])->limit(1);
+        $messageFromQuery = $usersTable->find('all')->where(['Users.id' => $message->user_id])->limit(1);
         $messageFromUser = $messageFromQuery->first();
 
         $isAuthorized = false;
@@ -181,7 +182,7 @@ class SupportController extends AppController
         if($this->request->getMethod() == 'POST') {
 
             $usersTable = TableRegistry::get(Configure::read('Users.table'));
-            $query = $usersTable->find('all')->where(['users.id' => $this->Auth->user('id')])->limit(1);
+            $query = $usersTable->find('all')->where(['Users.id' => $this->Auth->user('id')])->limit(1);
             $user = $query->first();
 
             $messagesTable = TableRegistry::get('AdminLTE.Messages');
@@ -223,18 +224,18 @@ class SupportController extends AppController
     public function tickets()
     {
         $usersTable = TableRegistry::get(Configure::read('Users.table'));
-        $query = $usersTable->find('all')->where(['users.id' => $this->Auth->user('id')])->limit(1);
+        $query = $usersTable->find('all')->where(['Users.id' => $this->Auth->user('id')])->limit(1);
         $user = $query->first();
 
         $table = TableRegistry::get('AdminLTE.Messages');
 
         if($user->role == 'admin') {
 
-            $messagesQuery = $table->find('all', ['contain' => ['FaqTopics']])->where(['messages.message_id' => 0, 'messages.closed' => 0]);
+            $messagesQuery = $table->find('all', ['contain' => ['FaqTopics']])->where(['Messages.message_id' => 0, 'Messages.closed' => 0]);
         }
         else {
 
-            $messagesQuery = $table->find('all', ['contain' => ['FaqTopics']])->where(['messages.message_id' => 0, 'messages.closed' => 0, 'messages.user_id' => $user->id]);
+            $messagesQuery = $table->find('all', ['contain' => ['FaqTopics']])->where(['Messages.message_id' => 0, 'Messages.closed' => 0, 'Messages.user_id' => $user->id]);
         }
 
         $tableAlias = $table->getAlias();
@@ -281,9 +282,9 @@ class SupportController extends AppController
 
             $message_id = $result->id;
 
-            $support_username = 'admin'; // Configure::read('Users.support_username');
+            $support_username = 'superadmin'; // Configure::read('Users.support_username');
 
-            $query = $usersTable->find('all')->where(['users.username' => $support_username])->limit(1);
+            $query = $usersTable->find('all')->where(['Users.username' => $support_username])->limit(1);
             $admin = $query->first();
 
             $recipientsTable = TableRegistry::get('AdminLTE.Recipients');
